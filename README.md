@@ -1,5 +1,5 @@
-<h1><b><span style="color: #72d4de">Code des différentes parties du uP développé en VHDL</span></b></h1>
-
+<h1><b><span style="color: #72d4de">Code le l'uP développé en VHDL</span></b></h1>
+from <a href ="https://github.com/titouanrt/vhdl">https://github.com/titouanrt/vhdl</a>
 <h2><u><b>Arithmetic and Logic Unit (ALU)</b></u></h2>
 Le code <a href ="design/alu.vhd">alu.vhd</a> contient le design associé à l'image ci-dessous :<br>
 <img src="readme_content/ALU_IMAGE.png" style="width:200px;"></img>
