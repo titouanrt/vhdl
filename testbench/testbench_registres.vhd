@@ -1,21 +1,21 @@
 ----------------------------------------------------------------------------------
--- Company:
--- Engineer:
---
+-- Company: 
+-- Engineer: 
+-- 
 -- Create Date: 10/04/2024 05:09:11 PM
--- Design Name:
+-- Design Name: 
 -- Module Name: testbench_registres - Behavioral
--- Project Name:
--- Target Devices:
--- Tool Versions:
--- Description:
---
--- Dependencies:
---
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
---
+-- 
 ----------------------------------------------------------------------------------
 
 
@@ -75,17 +75,20 @@ begin
 CLK <= not(CLK);
 wait for Clock_period/2;
 end process;
-
 process
 begin
+
+
+
+aB <= "0111";
+wait for 50 ns;
+DATA <= "00000010";
+W <= '1';
+aW <= "0111";
+wait for 50 ns;
 DATA <= "00000001";
 aW <= "1000";
-wait for 50 ns;
-W <= '1';
-DATA <= "00000010";
-aW <= "0111";
 aA <= "1000";
-aB <= "0111";
 wait for 50 ns;
 W<= '0';
 RST <= '0';
@@ -93,13 +96,12 @@ aA <= "1000";
 aB <= "0111";
 wait for 50 ns;
 RST <= '1';
-W='1'
-DATA <= "11111111";
-aW <= "0110";
 wait for 50 ns;
+
+
+
 
 end process;
 
 
 end Behavioral;
-

@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 10/01/2024 11:02:34 PM
+-- Create Date: 10/02/2024 03:52:52 PM
 -- Design Name: 
 -- Module Name: testbench_alu - Behavioral
 -- Project Name: 
@@ -55,35 +55,57 @@ end component alu;
 
 begin
 uut : alu port map(
-A=>A,
-B=>B,
-control=>control,
-carry=>carry,
-overflow=>overflow,
-negative=>negative,
-S=>S
+    A=>A,
+    B=>B,
+    control=>control,
+    carry=>carry,
+    overflow=>overflow,
+    negative=>negative,
+    S=>S
 );
 process
 begin
-
+--S <= "00000000";
+--carry <= '0';
+--overflow <= '0';
+--negative <= '0';
 A <= "10000001";
 B <= "10000000";
-control <= "000" after 10 ns;
-wait for 10 ns;
-control <= "001" after 10 ns;
-wait for 10 ns;
-control <= "010" after 10 ns;
-wait for 10 ns;
-control <= "011" after 10 ns;
-wait for 10 ns;
-control <= "100" after 10 ns;
-wait for 10 ns;
-control <= "101" after 10 ns;
-wait for 10 ns;
-control <= "110" after 10 ns;
-wait for 10 ns;
-control <= "111" after 10 ns;
-wait for 10 ns;
+control <= "000";
+wait for 100 ns;
+control <= "001" after 100 ns;
+wait for 100 ns;
+control <= "010" after 100 ns;
+wait for 100 ns;
+control <= "011" after 100 ns;
+wait for 100 ns;
+control <= "100" after 100 ns;
+wait for 100 ns;
+control <= "101" after 100 ns;
+wait for 100 ns;
+control <= "110" after 100 ns;
+wait for 100 ns;
+control <= "111" after 100 ns;
+wait for 100 ns;
+
+A <= "00000001";
+B <= "00000010";
+control <= "000";
+wait for 100 ns;
+control <= "001" after 100 ns;
+wait for 100 ns;
+control <= "010" after 100 ns;
+wait for 100 ns;
+control <= "011" after 100 ns;
+wait for 100 ns;
+control <= "100" after 100 ns;
+wait for 100 ns;
+control <= "101" after 100 ns;
+wait for 100 ns;
+control <= "110" after 100 ns;
+wait for 100 ns;
+control <= "111" after 100 ns;
+wait for 100 ns;
 
 
 end process;

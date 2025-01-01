@@ -1,21 +1,21 @@
 ----------------------------------------------------------------------------------
--- Company:
--- Engineer:
---
--- Create Date: 10/04/2024 03:35:53 PM
--- Design Name:
--- Module Name: banc2registres - Behavioral
--- Project Name:
--- Target Devices:
--- Tool Versions:
--- Description:
---
--- Dependencies:
---
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 11/22/2024 10:02:37 AM
+-- Design Name: 
+-- Module Name: donnees - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
---
+-- 
 ----------------------------------------------------------------------------------
 
 
@@ -49,11 +49,11 @@ signal RAM : signalmemory := (others => (others => '0'));
 begin
 process(CLK) 
 begin
-if rising_edge(CLK) then
+if falling_edge(CLK) then
     if RST='0' then
         RAM <= (others => (others => '0'));
     end if;
-    if RW = '1' then --ecriture
+    if RW = '0' then --ecriture
         RAM(to_integer(unsigned(aDATA))) <= DATA_IN;
     else
         DATA_OUT <= RAM(to_integer(unsigned(aDATA)));

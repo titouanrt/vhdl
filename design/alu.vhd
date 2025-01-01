@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 10/01/2024 10:40:29 PM
+-- Create Date: 10/02/2024 03:50:11 PM
 -- Design Name: 
 -- Module Name: alu - Behavioral
 -- Project Name: 
@@ -17,7 +17,6 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -45,38 +44,27 @@ end alu;
 architecture Behavioral of alu is
 signal result, a16, b16 : std_logic_vector (15 downto 0);
 begin
-process(A,B,control)
-begin
+
 --passage des signaux d'entrée sur 16 bits
 a16 <= "00000000" & A;
 b16 <= "00000000" & B;
 
-case control is
-when "000" =>
-    result <= a16 + b16;
-when "001" =>
-    result <= a16 - b16;
-when "010"=>
-    result <= A * B;
-when "011" =>
-    result <= a16 or b16;
-when "100" =>
-    result <= a16 and b16;
-when "101" =>
-    result <= a16 xor b16;
-when "110" =>
-    result <= not a16;
-when "111" =>
-    result <= not b16;
-when others =>
-    result <= (others => '0');
- end case;
+with control select
 
-end process;
+    result <= a16 + b16 when "000",
+    a16 - b16 when "001",
+    A * B when "010",
+    a16 or b16 when "011",
+    a16 and b16 when "100",
+    a16 xor b16 when "101",
+    not a16 when "110",
+    not b16 when "111",
+    (others => '0') when others;
+
 
 S <= result(7 downto 0);
-carry <= '1' when (result(8)='1') else '0';
-overflow <= '1' when result(15 downto 8) /= "00000000" else '0';
-negative <= result(7);
+carry <= '1' when (result(8)='1') and control = "000" else '0';
+overflow <= '1' when (result(15 downto 8) /= "00000000" ) and control = "010" else '0';
+negative <= '1' when A < B  and control = "001" else '0';
 
 end Behavioral;
